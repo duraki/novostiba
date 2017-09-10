@@ -1,11 +1,15 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 
+use Novosti\Command\KlixParseCommand;
+
 $application = new Application();
+
+$application->add(new KlixParseCommand);
 
 $application->run();
 
