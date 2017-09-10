@@ -7,7 +7,7 @@ use Novosti\Model\News;
 class AbstractMediaParser
 {
 
-    public function parse(News $article)
+    public function save(News $article)
     {
 
     }

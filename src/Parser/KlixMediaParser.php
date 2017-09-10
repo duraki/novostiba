@@ -12,7 +12,7 @@ class KlixMediaParser extends AbstractMediaParser
 
     private const API_ENDPOINT = 'https://www.klix.ba/sitemap/news';
 
-    private function extract()
+    private function parse()
     {
 
     }
