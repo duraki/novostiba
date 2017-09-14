@@ -26,6 +26,17 @@ abstract class AbstractMediaParser
     protected function save(News $article)
     {
         $this->repository = new NewsRepository;
+    
+        $articles = $this->repository->getArticles(); # previous results (def: 10 past)
+        $url = []; # dataset for currently found urls
+
+        foreach ($this->article as $newArticle) {
+            $urls[] = $newArticle->url;
+        }
+
+    
+
+
         $this->repository->saveArticle($article);
     }
 

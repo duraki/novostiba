@@ -16,7 +16,9 @@ class NewsRepository extends CommonRepository
 
     public function getArticles($service = '', $count = 10)
     {
-
+        return $this->conn->select('articles', 'url', [
+            'LIMIT' => $count,
+        ]);
     }
 
     public function saveArticle(News $news)
