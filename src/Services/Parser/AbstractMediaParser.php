@@ -1,15 +1,25 @@
 <?php
 
-namespace Novosti\Parser;
+namespace Novosti\Services\Parser;
 
 use Novosti\Model\News;
 
 abstract class AbstractMediaParser
 {
 
-    public function save(News $article)
-    {
+    /**
+     * @var $parser
+     */
+    protected $parser;
 
+    /**
+     * @var $article
+     */
+    protected $article;
+
+    protected function save(News $article)
+    {
+        $article->save();
     }
 
 }
