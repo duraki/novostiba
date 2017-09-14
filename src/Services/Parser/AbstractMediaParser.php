@@ -3,6 +3,7 @@
 namespace Novosti\Services\Parser;
 
 use Novosti\Model\News;
+use Novosti\Repository\Impl\NewsRepository;
 
 abstract class AbstractMediaParser
 {
@@ -17,9 +18,15 @@ abstract class AbstractMediaParser
      */
     protected $article;
 
+    /**
+     * @var $repository
+     */
+    private $repository;
+
     protected function save(News $article)
     {
-        $article->save();
+        $this->repository = new NewsRepository;
+        $this->repository->saveArticle($article);
     }
 
 }

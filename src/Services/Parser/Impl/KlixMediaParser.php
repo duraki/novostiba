@@ -33,9 +33,11 @@ class KlixMediaParser extends AbstractMediaParser
             $this->article->comment = $node->filter('span')->text();
             $this->article->subject = $node->filter('h1')->text();
             $this->article->url     = $node->filter('a')->link()->getUri();
+
+            $this->save($this->article);
         });
 
-        $this->save($this->article);
+        return true;
     }
 
 }
