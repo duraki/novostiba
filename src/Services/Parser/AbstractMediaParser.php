@@ -4,7 +4,7 @@ namespace Novosti\Parser;
 
 use Novosti\Model\News;
 
-class AbstractMediaParser
+abstract class AbstractMediaParser
 {
 
     public function save(News $article)

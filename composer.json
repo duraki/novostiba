@@ -3,6 +3,7 @@
         "psr-4": {"Novosti\\": "src/"}
     },
     "require": {
-        "symfony/console": "^3.3"
+        "symfony/console": "^3.3",
+        "fabpot/goutte": "^3.2"
     }
 }

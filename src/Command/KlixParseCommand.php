@@ -10,11 +10,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class KlixParseCommand extends Command
 {
 
-    private const PORTAL = 'https://klix.ba';
+    private const PORTAL = 'novostiba.portal.klix.ba';
 
     protected function configure()
     {
-        $this->setName('media:parse:klix');
+        $this->setName('novosti:parse:klix');
         $this->setDescription('Parses and analyze latest news from Klix.ba.');
     }
 
