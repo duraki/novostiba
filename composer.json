@@ -4,6 +4,7 @@
     },
     "require": {
         "symfony/console": "^3.3",
-        "fabpot/goutte": "^3.2"
+        "fabpot/goutte": "^3.2",
+        "catfan/Medoo": "^1.4"
     }
 }
