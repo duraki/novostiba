@@ -11,7 +11,7 @@ use Novosti\Services\Parser\Impl\KlixMediaParser;
 final class KlixParseCommand extends BaseCommand 
 {
 
-    protected const PORTAL = 'novosti.portal.klix.ba';
+    public const PORTAL = 'novosti.portal.klix.ba';
 
     protected function configure()
     {

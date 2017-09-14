@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Novosti\Services\Parser\AbstractMediaParser;
+use Novosti\Command\KlixParseCommand;
 use Novosti\Model\News;
 use Goutte\Client;
 
@@ -33,6 +34,7 @@ class KlixMediaParser extends AbstractMediaParser
             $this->article->comment = $node->filter('span')->text();
             $this->article->subject = $node->filter('h1')->text();
             $this->article->url     = $node->filter('a')->link()->getUri();
+            $this->article->service = KlixParseCommand::PORTAL;
 
             $this->save($this->article);
         });
