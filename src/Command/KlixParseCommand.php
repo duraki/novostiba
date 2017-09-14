@@ -6,11 +6,12 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Novosti\Services\Parser\Impl\KlixMediaParser;
 
-final class KlixParseCommand extends Command
+final class KlixParseCommand extends BaseCommand 
 {
 
-    private const PORTAL = 'novostiba.portal.klix.ba';
+    protected const PORTAL = 'novosti.portal.klix.ba';
 
     protected function configure()
     {
@@ -20,13 +21,12 @@ final class KlixParseCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->start($output, self::PORTAL);
 
-        $output->writeln(sprintf(
-            'Analyzing and parsing news from: %s', self::PORTAL
-        ));
+        $this->parser = new KlixMediaParser;
+        $this->parser->parse();
 
         return 0;
-
     }
 
 
