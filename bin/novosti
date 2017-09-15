@@ -7,6 +7,7 @@ use Symfony\Component\Console\Application;
 use Novosti\Command\KlixParseCommand;
 use Novosti\Command\CinParseCommand;
 use Novosti\Command\VijestiParseCommand;
+use Novosti\Command\Feed\CreateFeedCommand;
 
 /**
  *
@@ -25,6 +26,7 @@ $application = new Application();
 $application->add(new KlixParseCommand);
 $application->add(new CinParseCommand);
 $application->add(new VijestiParseCommand);
+$application->add(new CreateFeedCommand);
 
 
 
