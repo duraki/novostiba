@@ -4,12 +4,26 @@
 require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-
 use Novosti\Command\KlixParseCommand;
+
+/**
+ *
+ * Global accessible variables using .env
+ */
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
+
 
 $application = new Application();
 
+/**
+ *
+ * Initialize all commands here ...
+ */
 $application->add(new KlixParseCommand);
 
+
+
+/* Run application instance */
 $application->run();
 
