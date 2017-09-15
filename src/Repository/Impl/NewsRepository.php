@@ -12,12 +12,17 @@ class NewsRepository extends CommonRepository
     function __construct()
     {
         //
+        parent::__construct();
     }
 
-    public function getArticles($service = '', $count = 10)
+    public function getArticles($service = '', $count = 30)
     {
         return $this->conn->select('articles', 'url', [
             'LIMIT' => $count,
+            'ORDER' => [
+                'rowid' => "DESC"
+            ],
+            'service' => $service
         ]);
     }
 
@@ -28,6 +33,7 @@ class NewsRepository extends CommonRepository
             'subject' => $news->subject,
             'url' => $news->url,
             'service' => $news->service,
+            'id' => $news->id,
         ]);
     }
 

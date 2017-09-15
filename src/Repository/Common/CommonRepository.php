@@ -17,7 +17,7 @@ class CommonRepository
 
     function __construct()
     {
-        $this->connect;
+        $this->connect();
     }
 
     /**
