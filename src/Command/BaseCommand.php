@@ -25,8 +25,6 @@ abstract class BaseCommand extends Command
 
     protected function start($output)
     {
-        //$this->portal = $portal;
-
         $this->logger->write()->info(sprintf("Started base command: %s", $this->getPortal()));
         $output->writeln(sprintf(
             'Analyzing and parsing news from: %s', $this->getPortal() 
