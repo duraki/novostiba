@@ -28,7 +28,7 @@ class NewsRepository extends CommonRepository
 
     public function getAllArticles($count = 30)
     {
-        return $this->conn->select('articles', ['url', 'subject'], [
+        return $this->conn->select('articles', ['rowid', 'url', 'subject'], [
             'LIMIT' => $count,
             'ORDER' => [
                 'rowid' => "DESC"
