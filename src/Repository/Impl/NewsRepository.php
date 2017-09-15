@@ -26,6 +26,16 @@ class NewsRepository extends CommonRepository
         ]);
     }
 
+    public function getAllArticles($count = 30)
+    {
+        return $this->conn->select('articles', ['url', 'subject'], [
+            'LIMIT' => $count,
+            'ORDER' => [
+                'rowid' => "DESC"
+            ],
+        ]);
+    }
+
     public function saveArticle(News $news)
     {
         $this->conn->insert('articles', [
