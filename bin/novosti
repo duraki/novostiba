@@ -6,6 +6,7 @@ require __DIR__.'/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use Novosti\Command\KlixParseCommand;
 use Novosti\Command\CinParseCommand;
+use Novosti\Command\VijestiParseCommand;
 
 /**
  *
@@ -23,6 +24,7 @@ $application = new Application();
  */
 $application->add(new KlixParseCommand);
 $application->add(new CinParseCommand);
+$application->add(new VijestiParseCommand);
 
 
 
