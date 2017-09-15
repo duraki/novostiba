@@ -3,3 +3,4 @@ vendor/
 database/*.sqlite
 !database/.gitkeep
 .env
+storage/logs/
