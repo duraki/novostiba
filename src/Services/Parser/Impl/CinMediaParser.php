@@ -37,8 +37,8 @@ class CinMediaParser extends AbstractMediaParser
             $this->logger->write()->info("Moving dataset into model group ...");
 
             $this->article = new News; 
-            $this->article->comment = $node->filter('div.vijesti-naslov')->text();
-            $this->article->subject = 'NONE';
+            $this->article->comment = 'NONE'; 
+            $this->article->subject = $node->filter('div.vijesti-naslov')->text();
             $this->article->url     = $node->filter('a')->link()->getUri();
             $this->article->service = CinParseCommand::PORTAL;
             $this->article->id      = "CIN".$node->filter('div.vijesti-share')->text();
