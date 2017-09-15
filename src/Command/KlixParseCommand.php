@@ -21,12 +21,19 @@ final class KlixParseCommand extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->start($output, self::PORTAL);
+        $this->start($output);
+
+        $this->logger->write()->info(sprintf("Creating parser object for %s ...", $this->getPortal()));
 
         $this->parser = new KlixMediaParser;
         $this->parser->parse();
 
         return 0;
+    }
+
+    function getPortal()
+    {
+        return self::PORTAL;
     }
 
 
