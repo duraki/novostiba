@@ -11,7 +11,7 @@ class NewsRepository extends CommonRepository
 
     function __construct()
     {
-        $this->makeConnection();
+        //
     }
 
     public function getArticles($service = '', $count = 10)

@@ -15,12 +15,17 @@ class CommonRepository
      */
     protected $conn;
 
+    function __construct()
+    {
+        $this->connect;
+    }
+
     /**
      * Make connection to database
      *
      * @return bool 
      */
-    public function makeConnection()
+    public function connect()
     {
         $this->conn = new Medoo(
             $this->databaseConfig
