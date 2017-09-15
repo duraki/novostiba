@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Novostiba - Sve novosti na jednom mjestu</title>
+  <meta name="description" content="Novosti - Open-source bot koji pretrazuje zadnje objavljenje vijesti">
+  <meta name="author" content="duraki/novostiba">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 25%">
+        <h2>Novosti</h2>
+	<p>Najnovije vijesti sa Klix.ba, Cin.ba, Vijesti.ba; Bez reklama. Prati <a class="social"
+        href="https://twitter.com/novostiba" target="_blank">@novostiba</a> na
+        Twitteru. Šalji dalje :)</p>
+
+      </div>
+    </div>
+
+    <div class="row">
+        <ul>
+            {% for article in news %}
+            <li><a href="vijest/{{ article.rowid }}.html">{{ article.subject }}</a> <br> <code>{{ article.url[:100] }}</code></li>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
