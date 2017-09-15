@@ -2,10 +2,6 @@
 
 namespace Novosti\Services\Parser\Impl;
 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Novosti\Services\Parser\AbstractMediaParser;
 use Novosti\Command\KlixParseCommand;
 use Novosti\Model\News;
@@ -18,6 +14,9 @@ class KlixMediaParser extends AbstractMediaParser
 
     private const HTML_ENDPOINT = 'https://www.klix.ba/najnovije';
 
+    /**
+     * @var $client;
+     */
     private $client;
 
     function __construct()
