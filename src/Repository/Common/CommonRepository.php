@@ -28,7 +28,7 @@ class CommonRepository
     public function connect()
     {
         $this->conn = new Medoo(
-            $this->databaseConfig
+            $this->getDatabaseConfig()
         );
 
         return true;
