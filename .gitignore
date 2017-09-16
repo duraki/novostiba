@@ -5,3 +5,4 @@ database/*.sqlite
 .env
 storage/logs/
 docs/*.html
+docs/vijesti/*.html
