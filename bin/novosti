@@ -8,6 +8,7 @@ use Novosti\Command\KlixParseCommand;
 use Novosti\Command\CinParseCommand;
 use Novosti\Command\VijestiParseCommand;
 use Novosti\Command\Feed\CreateFeedCommand;
+use Novosti\Command\Article\BaseArticleCommand;
 
 /**
  *
@@ -27,6 +28,7 @@ $application->add(new KlixParseCommand);
 $application->add(new CinParseCommand);
 $application->add(new VijestiParseCommand);
 $application->add(new CreateFeedCommand);
+$application->add(new BaseArticleCommand);
 
 
 
