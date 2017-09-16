@@ -11,8 +11,26 @@ class NewsRepository extends CommonRepository
 
     function __construct()
     {
-        //
         parent::__construct();
+    }
+
+    public function getHashByUrl($url)
+    {
+        return $this->conn->select('articles', ['rowid', 'hash'], [
+            'LIMIT'  => 1,
+            'url' => $url
+        ]);
+    }
+
+    public function getArticlesForExtraction($service = '', $count = 30)
+    {
+        return $this->conn->select('articles', 'rowid', 'url', 'id', [
+            'LIMIT' => $count,
+            'ORDER' => [
+                'rowid' => "DESC"
+            ],
+            'service' => $service
+        ]);
     }
 
     public function getArticles($service = '', $count = 30)
@@ -28,7 +46,7 @@ class NewsRepository extends CommonRepository
 
     public function getAllArticles($count = 30)
     {
-        return $this->conn->select('articles', ['rowid', 'url', 'subject'], [
+        return $this->conn->select('articles', ['hash', 'url', 'subject'], [
             'LIMIT' => $count,
             'ORDER' => [
                 'rowid' => "DESC"
@@ -44,6 +62,7 @@ class NewsRepository extends CommonRepository
             'url' => $news->url,
             'service' => $news->service,
             'id' => $news->id,
+            'hash' => $news->hash,
         ]);
     }
 
