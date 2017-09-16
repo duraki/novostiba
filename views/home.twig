@@ -34,7 +34,7 @@
     <div class="row">
         <ul>
             {% for article in news %}
-            <li><a href="vijest/{{ article.rowid }}.html">{{ article.subject }}</a> <br> <code>{{ article.url[:100] }}</code></li>
+            <li><a href="vijesti/{{ article.hash }}.html">{{ article.subject }}</a> <br> <code>{{ article.url[:100] }}</code></li>
             {% endfor %}
         </ul>
     </div>

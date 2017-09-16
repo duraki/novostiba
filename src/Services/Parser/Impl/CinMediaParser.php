@@ -26,6 +26,7 @@ class CinMediaParser extends AbstractMediaParser
         $this->client = new Client;
     }
 
+
     public function parse()
     {
         $this->logger->write()->info(sprintf("Requesting website with endpoint: %s", self::HTML_ENDPOINT));
@@ -42,6 +43,7 @@ class CinMediaParser extends AbstractMediaParser
             $this->article->url     = $node->filter('a')->link()->getUri();
             $this->article->service = CinParseCommand::PORTAL;
             $this->article->id      = "CIN".$node->filter('div.vijesti-share')->text();
+            $this->article->hash    = $this->random();
 
             $this->logger->write()->info(sprintf("Found #{ID}: %s | #{Service}: %s", $this->article->id, $this->article->service));
 

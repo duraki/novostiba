@@ -63,11 +63,19 @@ abstract class AbstractMediaParser
             $this->logger
                 ->write()
                 ->warning(sprintf("Article seems to be in the database, skipping!", count($pastNews)));
+
             return true;
         }
 
         $this->logger->write()->info("Article not found, saving new one ...");
         $this->repository->saveArticle($article);
+    }
+
+    protected function random($length = 15)
+    {
+        $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        return substr(str_shuffle(str_repeat($pool, $length)), 0, $length);
     }
 
     abstract public function parse();
