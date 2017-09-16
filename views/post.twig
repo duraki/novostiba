@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Novostiba - Sve novosti na jednom mjestu - {{ post.title }}</title>
+  <meta name="description" content="Novosti - Open-source bot koji pretrazuje zadnje objavljenje vijesti">
+  <meta name="author" content="duraki/novostiba">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/skeleton.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="one-half column" style="margin-top: 25%">
+          <h2>{{ post.title }}</h2>
+          <b>Piše:</b> Klix.ba
+
+          <hr>
+
+          <p>{{ post.text }}</p>
+
+          <code>{{ post.tags }}</code>
+          <code>{{ post.url }}</code>
+      </div>
+    </div>
+
+    <div class="row">
+    </div>
+  </div>
+
+</body>
+</html>
+
+
+
