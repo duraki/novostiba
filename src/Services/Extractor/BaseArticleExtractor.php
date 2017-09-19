@@ -44,7 +44,9 @@ abstract class BaseArticleExtractor
         $this->repository = new PostRepository;
         $this->feed = new Feed;
 
-        $this->logger->write()->info("Creating client interface ...");
+        $this->logger->write()->info(sprintf("Creating client interface ... %s",
+            $this->getPortal()));
+
         $this->client = new Client;
     }
 
