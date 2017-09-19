@@ -7,16 +7,23 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Novosti\Services\Extractor\Impl\KlixArticleExtractor;
+use Novosti\Services\Extractor\Impl\CinArticleExtractor;
 use Novosti\Repository\Impl\PostRepository;
 use Novosti\Repository\Impl\NewsRepository;
 use Novosti\Model\Post;
 use Novosti\Command\KlixParseCommand;
+use Novosti\Command\CinParseCommand;
 use Novosti\Common\Logger;
 
 class BaseArticleCommand extends Command
 {
 
     const COMMAND_ARTICLE_LOG_HANDLER = 'command';
+
+    private $media = [
+        KlixParseCommand::PORTAL => KlixArticleExtractor::class, 
+        CinParseCommand::PORTAL => CinArticleExtractor::class,
+    ];
 
     /**
      * @var $postsRepository
@@ -50,17 +57,30 @@ class BaseArticleCommand extends Command
     {
         $this->logger->write()->info("Execution of base article|post extraction");
 
-        //xxx: call from arr[]::PORTAL 
-        $news = $this->getNewsByMedia(KlixParseCommand::PORTAL);
-        $posts = $this->getPostsByMedia(KlixParseCommand::PORTAL);
+        // % @var $cmd eq `novosti.portal.*`
+        foreach (array_keys($this->media) as $cmd) {
+            $news = $this->getNewsByMedia($cmd);
+            $posts = $this->getPostsByMedia($cmd);
+        }
 
-        $new = array_diff($news, $posts); // returns all from $1 that arent present in $2
+        $new = array_diff($news, $posts); // returns all from $1 that are not present in $2
 
+        $this->logger->write()->info(sprintf("Total new articles to extract: %s! Do it!", count($new)));
+
+        foreach ($this->media as $em) {
+            $this->logger->write()->info(sprintf("Extracting with object: %s", $em));
+            $this->getArticlesByMedia($em, $new);
+        }
+    }
+
+    private function getArticlesByMedia($media, $new)
+    {
         foreach ($new as $url) {
-            $ids = $this->newsRepository->getHashByUrl($url);
+            $id = $this->newsRepository->getHashByUrl($url);
+            $id = $id[0]['hash'];
 
-            $klix = new KlixArticleExtractor($url, $ids[0]['hash']);
-            $klix->extract();
+            $media = new $media($url, $id);
+            $media->extract();
         }
     }
 
