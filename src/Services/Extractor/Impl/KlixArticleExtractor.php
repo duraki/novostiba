@@ -24,12 +24,25 @@ class KlixArticleExtractor extends BaseArticleExtractor
      */
     private $hash;
 
+    /**
+     * @const attr
+     */
+    const PORTAL = KlixParseCommand::PORTAL;
+
     function __construct($url, $hash)
     {
         parent::__construct();
 
         $this->url = $url;
         $this->hash = $hash;
+    }
+
+    /**
+     * @const PORTAL
+     */
+    public function getPortal()
+    {
+        return self::PORTAL;
     }
 
     function extract()
