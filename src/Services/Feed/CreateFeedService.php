@@ -14,10 +14,12 @@ class CreateFeedService
     {
         $news = new NewsRepository;         
 
-        $news = $news->getAllArticles();
+        $news = $news->getAllArticles($limit);
 
         $loader = new \Twig_Loader_Filesystem(__DIR__.'/../../../views');
         $twig = new \Twig_Environment($loader);
+
+        shuffle($news);
 
         $feed = $twig->render('home.twig', array('news' => $news));
 
