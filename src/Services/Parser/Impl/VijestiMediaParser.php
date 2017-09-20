@@ -43,6 +43,7 @@ class VijestiMediaParser extends AbstractMediaParser
             $this->article->service = VijestiParseCommand::PORTAL;
             $this->article->id      = strtoupper(
                                       str_replace(' ', '_', $this->article->comment));
+            $this->article->hash    = $this->random();
 
             $this->logger->write()->info(sprintf("Found #{ID}: %s | #{Service}: %s", $this->article->id, $this->article->service));
 
