@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./novosti novosti:parse:klix
+./novosti novosti:parse:cin
+./novosti novosti:parse:vijesti
+
+./novosti novosti:feed:create
+./novosti novosti:article:extract
