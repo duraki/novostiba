@@ -21,8 +21,15 @@ class BaseArticleCommand extends Command
     const COMMAND_ARTICLE_LOG_HANDLER = 'command';
 
     private $media = [
-        KlixParseCommand::PORTAL => KlixArticleExtractor::class, 
-        CinParseCommand::PORTAL => CinArticleExtractor::class,
+        1 => [ 
+            KlixParseCommand::PORTAL,
+            KlixArticleExtractor::class, 
+        ],
+
+        2 => [
+            CinParseCommand::PORTAL,
+            CinArticleExtractor::class,
+        ],
     ];
 
     /**
@@ -58,9 +65,9 @@ class BaseArticleCommand extends Command
         $this->logger->write()->info("Execution of base article|post extraction");
 
         // % @var $cmd eq `novosti.portal.*`
-        foreach (array_keys($this->media) as $cmd) {
-            $news = $this->getNewsByMedia($cmd);
-            $posts = $this->getPostsByMedia($cmd);
+        foreach ($this->media as $cmd) {
+            $news = $this->getNewsByMedia($cmd[1]);
+            $posts = $this->getPostsByMedia($cmd[1]);
         }
 
         $new = array_diff($news, $posts); // returns all from $1 that are not present in $2
@@ -68,8 +75,8 @@ class BaseArticleCommand extends Command
         $this->logger->write()->info(sprintf("Total new articles to extract: %s! Do it!", count($new)));
 
         foreach ($this->media as $em) {
-            $this->logger->write()->info(sprintf("Extracting with object: %s", $em));
-            $this->getArticlesByMedia($em, $new);
+            $this->logger->write()->info(sprintf("Extracting with object: %s", json_encode($em)));
+            $this->getArticlesByMedia($em[0], $new);
         }
     }
 
@@ -79,8 +86,8 @@ class BaseArticleCommand extends Command
             $id = $this->newsRepository->getHashByUrl($url);
             $id = $id[0]['hash'];
 
-            $media = new $media($url, $id);
-            $media->extract();
+            $extractArticle = new $media($url, $id);
+            $extractArticle->extract();
         }
     }
 
