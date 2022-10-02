@@ -5,7 +5,7 @@
     "require": {
         "symfony/console": "^3.3",
         "fabpot/goutte": "^3.2",
-        "catfan/Medoo": "^1.4",
+        "catfan/medoo": "^1.4",
         "monolog/monolog": "^1.23",
         "vlucas/phpdotenv": "^2.4",
         "twig/twig": "^2.4"
